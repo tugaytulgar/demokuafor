@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { CalendarDays, ClipboardCopy, Link2, MessageCircle, Scissors, User, Phone, StickyNote } from 'lucide-react'
 import { motion } from 'framer-motion'
 
@@ -25,6 +26,7 @@ import { SlotGrid } from '../components/booking/SlotGrid'
 import { AppointmentLookup } from '../components/booking/AppointmentLookup'
 import { AppointmentTracking } from '../components/booking/AppointmentTracking'
 import { Toast } from '../components/ui/Toast'
+import { ThemeToggle } from '../components/ui/ThemeToggle'
 
 export default function CustomerApp() {
   const [activeView, setActiveView] = useState('new') // 'new' | 'lookup' | 'track'
@@ -172,23 +174,32 @@ export default function CustomerApp() {
           <div className="absolute -bottom-24 -left-24 h-80 w-80 rounded-full bg-white/10 blur-3xl" />
         </div>
 
-        <header className="relative mx-auto max-w-6xl px-4 py-10 sm:py-14">
+        <header className="relative mx-auto max-w-6xl px-4 py-8 sm:py-10">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             className="flex flex-col gap-4"
           >
-            <div className="inline-flex items-center gap-2 text-accent">
-              <Scissors className="h-5 w-5" />
-              <span className="text-sm tracking-widest uppercase">Luxury Barber Booking</span>
+            <div className="flex flex-wrap items-center justify-between gap-4">
+              <div>
+                <h1 className="text-2xl sm:text-4xl font-semibold leading-tight">
+                  Online <span className="text-accent">Randevu</span>
+                </h1>
+                <p className="mt-2 text-gray-600 dark:text-gray-400 max-w-xl">
+                  Hizmet ve berber seçin, tarih ve saat belirleyin; randevunuz dakikalar içinde hazır.
+                </p>
+              </div>
+              <div className="flex items-center gap-3">
+                <ThemeToggle />
+                <Link
+                  to="/"
+                  className="text-sm text-gray-600 hover:text-accent dark:text-gray-400 dark:hover:text-accent transition-colors"
+                >
+                  ← Ana sayfaya dön
+                </Link>
+              </div>
             </div>
-            <h1 className="text-3xl sm:text-5xl font-semibold leading-tight">
-              Kuaför Randevusu <span className="text-accent">Dakikalar İçinde</span>
-            </h1>
-            <p className="max-w-2xl text-text/75">
-              45 dakikalık slotlar, 09:00–21:00 çalışma saatleri ve 12:00–13:00 öğle arası otomatik bloklu.
-            </p>
 
             {!isEnvOk ? (
               <Card className="mt-4">
@@ -219,7 +230,7 @@ export default function CustomerApp() {
                 onClick={() => setActiveView('new')}
                 className={[
                   'rounded-xl px-4 py-3 text-sm font-medium transition-colors',
-                  activeView === 'new' ? 'bg-accent text-background' : 'bg-white/5 text-text hover:bg-white/10',
+                  activeView === 'new' ? 'bg-accent text-background' : 'bg-gray-100 text-gray-800 hover:bg-gray-200 dark:bg-white/5 dark:text-text dark:hover:bg-white/10',
                 ].join(' ')}
               >
                 Yeni Randevu
@@ -229,7 +240,7 @@ export default function CustomerApp() {
                 onClick={() => setActiveView('lookup')}
                 className={[
                   'rounded-xl px-4 py-3 text-sm font-medium transition-colors',
-                  activeView === 'lookup' ? 'bg-accent text-background' : 'bg-white/5 text-text hover:bg-white/10',
+                  activeView === 'lookup' ? 'bg-accent text-background' : 'bg-gray-100 text-gray-800 hover:bg-gray-200 dark:bg-white/5 dark:text-text dark:hover:bg-white/10',
                 ].join(' ')}
               >
                 Randevu Sorgula
@@ -239,7 +250,7 @@ export default function CustomerApp() {
                 onClick={() => setActiveView('track')}
                 className={[
                   'rounded-xl px-4 py-3 text-sm font-medium transition-colors',
-                  activeView === 'track' ? 'bg-accent text-background' : 'bg-white/5 text-text hover:bg-white/10',
+                  activeView === 'track' ? 'bg-accent text-background' : 'bg-gray-100 text-gray-800 hover:bg-gray-200 dark:bg-white/5 dark:text-text dark:hover:bg-white/10',
                 ].join(' ')}
               >
                 Takip
@@ -431,33 +442,9 @@ export default function CustomerApp() {
             </div>
           )}
         </Section>
-
-        <Section title="Galeri" subtitle="Tarz ve detay odaklı işçilik." className="mt-14">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {Array.from({ length: 8 }).map((_, i) => (
-              <div key={i} className="aspect-square rounded-2xl border border-white/10 bg-white/5 backdrop-blur" />
-            ))}
-          </div>
-        </Section>
-
-        <Section title="Müşteri Yorumları" subtitle="Kalite, hız ve konfor." className="mt-14">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {[
-              { name: 'Mert', text: 'Temiz, hızlı ve çok profesyonel.' },
-              { name: 'Can', text: 'Slot sistemi harika, bekleme yok.' },
-              { name: 'Eren', text: 'Sakal işçiligi gerçekten üst seviye.' },
-            ].map((t) => (
-              <Card key={t.name} className="h-full">
-                <p className="text-text/80">“{t.text}”</p>
-                <p className="mt-3 text-sm text-accent">{t.name}</p>
-              </Card>
-            ))}
-          </div>
-        </Section>
       </main>
 
       <Toast toast={toast} onClose={() => setToast(null)} />
     </div>
   )
 }
-

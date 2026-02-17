@@ -17,6 +17,7 @@ import { buildAppointmentIcs, downloadIcs } from '../../utils/ics'
 
 import { Button } from '../ui/Button'
 import { Card } from '../ui/Card'
+import { ThemeToggle } from '../ui/ThemeToggle'
 import { DatePicker } from '../booking/DatePicker'
 import { Input } from '../ui/Input'
 import { Toast } from '../ui/Toast'
@@ -338,6 +339,7 @@ export function AdminPanel() {
           <h3 className="font-semibold">Canlı Dashboard</h3>
         </div>
         <div className="flex items-center gap-2">
+          <ThemeToggle />
           <button
             type="button"
             onClick={() => setNotifyEnabled((p) => !p)}

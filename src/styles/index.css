@@ -7,8 +7,26 @@
     @apply antialiased;
   }
 
+  /* Tema değişkenleri – JS (ThemeContext) ile güncellenir */
   :root {
+    --color-background: #FAFAFA;
+    --color-text: #171717;
+    --color-accent: #B8860B;
+    color-scheme: light;
+  }
+
+  .dark {
+    --color-background: #0A0A0A;
+    --color-text: #F5F5F5;
+    --color-accent: #D4AF37;
     color-scheme: dark;
+  }
+
+  /* Ana layout: tema rengi her zaman değişkenden gelsin */
+  #root,
+  #root > * {
+    background-color: var(--color-background);
+    color: var(--color-text);
   }
 }
 
