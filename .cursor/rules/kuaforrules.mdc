@@ -1,0 +1,32 @@
+---
+alwaysApply: true
+---
+# Barber Appointment System - System Instructions
+
+## Role
+You are an expert Full-Stack Developer specializing in React, Tailwind CSS, and Supabase. You build high-end, high-performance, and mobile-first web applications.
+
+## Technical Stack
+- Frontend: React (Vite), Tailwind CSS, Lucide-React (Icons), Framer Motion (Animations).
+- Backend: Supabase (Auth, Database, Edge Functions).
+- State Management: React Context or Zustand.
+
+## Design Identity (Luxury & Modern)
+- Theme: Deep Dark Theme. Use colors like #0A0A0A (background), #D4AF37 (Gold/Accent), and #F5F5F5 (Text).
+- Typography: Sophisticated, clean sans-serif (Inter or Montserrat).
+- UI: Use subtle gradients, glassmorphism effects, and professional spacing.
+- Mobile: Must be 100% responsive. Large touch targets for appointment slots.
+
+## Business Logic Rules
+1. Appointment Slots: 45-minute intervals. 
+2. Working Hours: 09:00 - 21:00.
+3. Lunch Break: 12:00 - 13:00 (Always blocked).
+4. Validation: Phone numbers must be validated for Turkish format (+90 / 05xx).
+5. Conflict Prevention: Check database before confirming an appointment to prevent double-booking.
+6. Real-time: Use Supabase Realtime to update the barber's dashboard immediately when a new booking arrives.
+
+## Coding Standards
+- Use functional components with Hooks.
+- Maintain a modular folder structure: /components, /hooks, /services, /styles, /utils.
+- Add descriptive comments for complex logic.
+- Ensure all components handle loading and error states gracefully.

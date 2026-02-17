@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply antialiased;
+  }
+
+  :root {
+    color-scheme: dark;
+  }
+}
+
+@layer utilities {
+  .text-accent-gradient {
+    background: linear-gradient(90deg, rgba(212,175,55,1), rgba(245,245,245,0.85));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}

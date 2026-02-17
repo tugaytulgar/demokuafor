@@ -1,0 +1,19 @@
+{
+  "name": "Kuaför Randevu",
+  "short_name": "Kuaför Randevu",
+  "description": "Erkek kuaförü online randevu. Hizmet ve berber seçin, randevu alın.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A0A0A",
+  "theme_color": "#0A0A0A",
+  "orientation": "portrait-primary",
+  "lang": "tr",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any"
+    }
+  ]
+}
