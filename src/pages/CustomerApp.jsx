@@ -427,7 +427,7 @@ export default function CustomerApp() {
                         href={getWhatsAppUrl('Merhaba, randevum hakkında sorum var.')}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center gap-2 rounded-xl border border-emerald-500/40 bg-emerald-500/10 px-4 py-3 text-sm font-medium text-emerald-100 hover:bg-emerald-500/20 transition-colors"
+                        className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-emerald-600 bg-emerald-500/15 px-4 py-3 text-sm font-medium text-emerald-800 hover:bg-emerald-500/25 dark:border-emerald-500/40 dark:bg-emerald-500/10 dark:text-emerald-100 dark:hover:bg-emerald-500/20 transition-colors"
                       >
                         <MessageCircle className="h-4 w-4" />
                         Sorunuz varsa WhatsApp’tan yazın
