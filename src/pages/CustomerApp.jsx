@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { CalendarDays, ClipboardCopy, Link2, MessageCircle, Scissors, User, Phone, StickyNote } from 'lucide-react'
+import { CalendarDays, ClipboardCopy, Link2, MessageCircle, User, Phone, StickyNote } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 import { hasSupabaseEnv } from '../services/supabase'
@@ -27,6 +27,7 @@ import { AppointmentLookup } from '../components/booking/AppointmentLookup'
 import { AppointmentTracking } from '../components/booking/AppointmentTracking'
 import { Toast } from '../components/ui/Toast'
 import { ThemeToggle } from '../components/ui/ThemeToggle'
+import { ScissorsCutIcon } from '../components/ui/AnimatedLogo'
 
 export default function CustomerApp() {
   const [activeView, setActiveView] = useState('new') // 'new' | 'lookup' | 'track'
@@ -272,7 +273,7 @@ export default function CustomerApp() {
                 <Card>
                   <SelectGrid
                     title="Hizmet Seç"
-                    icon={<Scissors className="h-5 w-5" />}
+                    icon={<ScissorsCutIcon size="h-5 w-5" />}
                     items={servicesState.data || []}
                     loading={servicesState.loading}
                     error={servicesState.error}

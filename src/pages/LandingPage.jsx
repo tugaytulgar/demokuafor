@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { CalendarDays, Scissors, User } from 'lucide-react'
+import { CalendarDays, User } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 import { useBarbers } from '../hooks/useBarbers'
@@ -8,6 +8,7 @@ import { useServices } from '../hooks/useServices'
 import { Card } from '../components/ui/Card'
 import { Section } from '../components/ui/Section'
 import { ThemeToggle } from '../components/ui/ThemeToggle'
+import { AnimatedLogo, ScissorsCutIcon } from '../components/ui/AnimatedLogo'
 
 export default function LandingPage() {
   const servicesState = useServices()
@@ -22,10 +23,7 @@ export default function LandingPage() {
         </div>
 
         <header className="relative mx-auto max-w-6xl px-4 py-6 flex flex-wrap items-center justify-between gap-4">
-          <Link to="/" className="inline-flex items-center gap-2 text-accent">
-            <Scissors className="h-6 w-6" />
-            <span className="font-semibold text-lg">Kuaför</span>
-          </Link>
+          <AnimatedLogo iconSize="h-6 w-6" />
           <nav className="flex flex-wrap items-center gap-4">
             <a href="#hizmetler" className="text-sm text-gray-600 hover:text-accent dark:text-gray-400 dark:hover:text-accent transition-colors">
               Hizmetler
@@ -58,7 +56,7 @@ export default function LandingPage() {
             className="max-w-3xl mx-auto"
           >
             <p className="inline-flex items-center gap-2 text-accent text-sm tracking-widest uppercase mb-4">
-              <Scissors className="h-4 w-4" />
+              <ScissorsCutIcon size="h-4 w-4" />
               Erkek Kuaförü & Berber
             </p>
             <h1 className="text-4xl sm:text-6xl font-semibold leading-tight">
@@ -90,7 +88,7 @@ export default function LandingPage() {
                 <Card key={s.id} className="p-5">
                   <div className="flex items-start gap-3">
                     <div className="rounded-xl bg-accent/10 p-2.5">
-                      <Scissors className="h-5 w-5 text-accent" />
+                      <ScissorsCutIcon size="h-5 w-5" className="text-accent" />
                     </div>
                     <div>
                       <h3 className="font-semibold">{s.isim}</h3>
