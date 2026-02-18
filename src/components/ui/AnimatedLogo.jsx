@@ -22,9 +22,10 @@ export function ScissorsCutIcon({ className = '', size = 'h-4 w-4' }) {
     const id = setInterval(run, CUT_CYCLE_MS)
     return () => clearInterval(id)
   }, [])
+  const cutAnimation = { rotate: [-2, 6, -2], scale: [1, 1.08, 1] }
   return (
     <motion.span
-      animate={cut ? { rotate: [-2, 6, -2], scale: [1, 1.08, 1] }}
+      animate={cut ? cutAnimation : {}}
       transition={{ duration: CUT_ANIMATION_MS / 1000, ease: 'easeInOut' }}
       className={`inline-flex shrink-0 ${className}`}
     >
@@ -63,10 +64,11 @@ export function AnimatedLogo({ className = '', iconSize = 'h-6 w-6', asLink = tr
     return () => clearInterval(id)
   }, [])
 
+  const cutAnimation = { rotate: [-2, 6, -2], scale: [1, 1.08, 1] }
   const content = (
     <span className={`inline-flex items-center gap-2 text-accent ${className}`}>
       <motion.span
-        animate={cut ? { rotate: [-2, 6, -2], scale: [1, 1.08, 1] }}
+        animate={cut ? cutAnimation : {}}
         transition={{ duration: CUT_ANIMATION_MS / 1000, ease: 'easeInOut' }}
         className="inline-flex shrink-0"
       >
