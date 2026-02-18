@@ -9,6 +9,14 @@ import { Card } from '../components/ui/Card'
 import { Section } from '../components/ui/Section'
 import { ThemeToggle } from '../components/ui/ThemeToggle'
 import { AnimatedLogo, ScissorsCutIcon } from '../components/ui/AnimatedLogo'
+import { Gallery } from '../components/ui/Gallery'
+
+const GALLERY_IMAGES = [
+  'gallery/gorsel1.png',
+  'gallery/gorsel2.png',
+  'gallery/gorsel3.png',
+  'gallery/gorsel4.png',
+]
 
 export default function LandingPage() {
   const servicesState = useServices()
@@ -141,14 +149,7 @@ export default function LandingPage() {
         </Section>
 
         <Section id="galeri" title="Galeri" subtitle="Tarz ve detay odaklı işçilik." className="pt-14">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {Array.from({ length: 8 }).map((_, i) => (
-              <div
-                key={i}
-                className="aspect-square rounded-2xl border border-white/10 bg-white/5 backdrop-blur"
-              />
-            ))}
-          </div>
+          <Gallery images={GALLERY_IMAGES} />
         </Section>
 
         <Section id="yorumlar" title="Müşteri Yorumları" subtitle="Kalite, hız ve konfor." className="pt-14">
