@@ -7,7 +7,7 @@ const TEXT = 'Kuaför'
 const LETTER_DURATION_MS = 120
 const HOLD_DURATION_MS = 5000
 const CUT_CYCLE_MS = 6000 // typewriter + hold = ~1s + 5s
-const CUT_ANIMATION_MS = 400
+const CUT_ANIMATION_MS = 450
 
 /** Her 5–6 saniyede bir kesme hareketi yapan makas ikonu (tek başına kullanım için). */
 export function ScissorsCutIcon({ className = '', size = 'h-4 w-4' }) {
@@ -22,12 +22,17 @@ export function ScissorsCutIcon({ className = '', size = 'h-4 w-4' }) {
     const id = setInterval(run, CUT_CYCLE_MS)
     return () => clearInterval(id)
   }, [])
-  const cutAnimation = { rotate: [-2, 6, -2], scale: [1, 1.08, 1] }
+  // Kapanıp açılma: scaleX ile bıçakların kapanması, hafif rotate ile kesme hareketi
+  const cutAnimation = {
+    scaleX: [1, 0.78, 1],
+    rotate: [0, -6, 0],
+  }
   return (
     <motion.span
       animate={cut ? cutAnimation : {}}
       transition={{ duration: CUT_ANIMATION_MS / 1000, ease: 'easeInOut' }}
-      className={`inline-flex shrink-0 ${className}`}
+      style={{ transformOrigin: 'center center' }}
+      className={`inline-flex shrink-0 origin-center ${className}`}
     >
       <Scissors className={size} strokeWidth={2.2} />
     </motion.span>
@@ -64,13 +69,17 @@ export function AnimatedLogo({ className = '', iconSize = 'h-6 w-6', asLink = tr
     return () => clearInterval(id)
   }, [])
 
-  const cutAnimation = { rotate: [-2, 6, -2], scale: [1, 1.08, 1] }
+  const cutAnimation = {
+    scaleX: [1, 0.78, 1],
+    rotate: [0, -6, 0],
+  }
   const content = (
     <span className={`inline-flex items-center gap-2 text-accent ${className}`}>
       <motion.span
         animate={cut ? cutAnimation : {}}
         transition={{ duration: CUT_ANIMATION_MS / 1000, ease: 'easeInOut' }}
-        className="inline-flex shrink-0"
+        style={{ transformOrigin: 'center center' }}
+        className="inline-flex shrink-0 origin-center"
       >
         <Scissors className={iconSize} strokeWidth={2.2} />
       </motion.span>
