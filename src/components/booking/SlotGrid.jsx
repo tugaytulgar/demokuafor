@@ -61,7 +61,7 @@ export function SlotGrid({
                   ? 'border-gray-300 bg-gray-200/80 text-gray-500 cursor-not-allowed dark:border-white/20 dark:bg-white/10 dark:text-gray-500'
                   : '',
                 !busy && active
-                  ? 'border-accent/60 bg-accent/15 text-text dark:border-accent/60 dark:bg-accent/15'
+                  ? 'border-2 border-accent bg-accent/20 ring-2 ring-accent/40 text-gray-900 dark:text-text dark:border-accent dark:bg-accent/20 dark:ring-accent/40'
                   : '',
                 !busy && !active
                   ? 'border-gray-200 bg-gray-50 hover:bg-gray-100 dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10'
