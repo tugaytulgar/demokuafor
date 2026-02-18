@@ -1,3 +1,4 @@
+import { X } from 'lucide-react'
 import { buildCandidateSlots, rangesOverlap, timeStrToMinutes } from '../../utils/time'
 
 export function SlotGrid({
@@ -10,14 +11,14 @@ export function SlotGrid({
   error,
 }) {
   if (!enabled) {
-    return <p className="text-sm text-text/70">Slotları görmek için hizmet + berber seçin.</p>
+    return <p className="text-sm text-gray-600 dark:text-gray-400">Slotları görmek için hizmet + berber seçin.</p>
   }
 
   if (!selectedService) {
-    return <p className="text-sm text-text/70">Önce bir hizmet seçin.</p>
+    return <p className="text-sm text-gray-600 dark:text-gray-400">Önce bir hizmet seçin.</p>
   }
 
-  if (loading) return <p className="text-sm text-text/70">Dolu saatler kontrol ediliyor…</p>
+  if (loading) return <p className="text-sm text-gray-600 dark:text-gray-400">Dolu saatler kontrol ediliyor…</p>
   if (error) return <p className="text-sm text-red-200">Hata: {String(error.message || error)}</p>
 
   const { slots, duration } = buildCandidateSlots({ durationMinutes: selectedService.sure_dakika })
@@ -38,10 +39,10 @@ export function SlotGrid({
   return (
     <div>
       <div className="flex items-center justify-between mb-3">
-        <p className="text-sm text-text/70">
-          Süre: <span className="text-text">{duration} dk</span>
+        <p className="text-sm text-gray-600 dark:text-gray-400">
+          Süre: <span className="text-gray-900 dark:text-text">{duration} dk</span>
         </p>
-        <p className="text-xs text-text/50">Öğle arası 12:00–13:00 kapalı</p>
+        <p className="text-xs text-gray-500 dark:text-gray-400">Öğle arası 12:00–13:00 kapalı</p>
       </div>
 
       <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
@@ -53,15 +54,35 @@ export function SlotGrid({
               key={slot.label}
               type="button"
               disabled={busy}
-              onClick={() => onSelectTime?.(slot.label)}
+              onClick={() => !busy && onSelectTime?.(slot.label)}
               className={[
-                'rounded-xl px-3 py-2 text-sm border transition-colors',
-                busy ? 'border-white/10 bg-white/5 text-text/30 cursor-not-allowed' : '',
-                !busy && active ? 'border-accent/60 bg-accent/15 text-text' : '',
-                !busy && !active ? 'border-white/10 bg-white/5 hover:bg-white/10' : '',
+                'relative rounded-xl px-3 py-2.5 text-sm border transition-colors min-h-[44px] flex flex-col items-center justify-center gap-0.5',
+                busy
+                  ? 'border-gray-300 bg-gray-200/80 text-gray-500 cursor-not-allowed dark:border-white/20 dark:bg-white/10 dark:text-gray-500'
+                  : '',
+                !busy && active
+                  ? 'border-accent/60 bg-accent/15 text-text dark:border-accent/60 dark:bg-accent/15'
+                  : '',
+                !busy && !active
+                  ? 'border-gray-200 bg-gray-50 hover:bg-gray-100 dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10'
+                  : '',
               ].join(' ')}
             >
-              {slot.label}
+              {busy ? (
+                <>
+                  <span className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
+                    <X className="h-6 w-6 text-gray-400/50 dark:text-gray-500/50 stroke-[2.5]" />
+                  </span>
+                  <span className="relative z-10 flex flex-col items-center gap-0.5">
+                    <span className="line-through opacity-80">{slot.label}</span>
+                    <span className="text-[10px] font-semibold uppercase tracking-wide text-gray-600 dark:text-gray-400">
+                      Dolu
+                    </span>
+                  </span>
+                </>
+              ) : (
+                slot.label
+              )}
             </button>
           )
         })}
